@@ -1,0 +1,11 @@
+﻿# CMakeList.txt : CMake project for DistribtutedSystem, include source and define
+# project specific logic here.
+#
+cmake_minimum_required (VERSION 3.8)
+
+set(HEADERS
+   ${SOURCE}
+   ${CMAKE_CURRENT_SOURCE_DIR}/MacLogger.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/UnixLogger.hpp
+   PARENT_SCOPE
+)

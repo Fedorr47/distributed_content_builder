@@ -8,11 +8,10 @@
 #ifndef IQueue_h
 #define IQueue_h
 
-#include "IRemoteAgent.hpp"
+#include "IRemoteAgent.h"
 
 class IQueue {
 public:
-    IQueue() {}
     virtual bool AssignTask(IRemoteAgent* a) = 0;
     virtual bool AllTasksComplete() = 0;
 };

@@ -8,7 +8,7 @@
 #ifndef IRemoteAgent_h
 #define IRemoteAgent_h
 
-#include "..\Interfaces\ITask.hpp"
+#include "ITask.h"
 
 class IRemoteAgent {
 public:
@@ -17,7 +17,6 @@ public:
     };
 
 public:
-    IRemoteAgent() {}
     AgentStatus state_;
     int id_;
 public:

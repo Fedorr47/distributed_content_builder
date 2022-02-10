@@ -1,16 +1,27 @@
-#include "Controller.hpp"
+//
+//  Controller.cpp
+//  distributed_content_builder
+//
+//  Created by Евгений Курятов on 02.02.2022.
+//
 
+#include <vector>
+#include <chrono>
 #include <thread>
 
-#include "../Interfaces/IRemoteAgent.hpp"
-#include "../Agent/RemoteAgent.hpp"
-#include "../Queue/Queue.hpp"
-#include "../Network/TestNetwork.hpp"
+#include "Controller.hpp"
+#include "RemoteAgent.hpp"
+#include "Queue.hpp"
 
-std::vector<IRemoteAgent*> Controller::GetAvailableAgents()
-{
+Controller::Controller(ILogger *logger, INetwork *network) {
+    logger_ = logger;
+    network_ = network;
+};
+
+std::vector<IRemoteAgent*> Controller::GetAvailableAgents() {
+    
     // TODO: Use Network to get available agents
-
+    
     int count_ = 3;
     std::vector<IRemoteAgent*> remote_agents;
     for(int i = 0; i < count_; i++){
@@ -18,25 +29,23 @@ std::vector<IRemoteAgent*> Controller::GetAvailableAgents()
     }
 
     return remote_agents;
-}
+};
 
-void Controller::BuildContent(IContent* content)
-{
+void Controller::BuildContent(IContent* content) {
     std::vector<IRemoteAgent*> agent_list = GetAvailableAgents();
     
     // TODO: move Content splitting to IContent
     
     Queue* queue = new Queue(1, 10, content->GetSize(), logger_);
-    TestNetwork* network = new TestNetwork(logger_);
     
     while (!queue->AllTasksComplete()) {
         for (int i = 0; i < agent_list.size(); i++) {
             IRemoteAgent* agent = agent_list[i];
-            IRemoteAgent::AgentStatus status = network->CheckAgentStatus(agent);
+            IRemoteAgent::AgentStatus status = network_->CheckAgentStatus(agent);
             switch ( status )
             {
                 case IRemoteAgent::AgentStatus::STATE_TASK_COMPLETE:
-                    network->CollectTaskResult(agent);
+                    network_->CollectTaskResult(agent);
                     queue->AssignTask(agent);
                     break;
                 case IRemoteAgent::AgentStatus::STATE_AVAILABLE:
@@ -52,4 +61,5 @@ void Controller::BuildContent(IContent* content)
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
-}
+//    return build_time;
+};

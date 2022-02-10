@@ -1,21 +1,22 @@
-#pragma once
+//
+//  Controller.hpp
+//  distributed_content_builder
+//
+//  Created by Евгений Курятов on 02.02.2022.
+//
 
-#include "../Interfaces/IController.hpp"
-#include "../Interfaces/ILogger.hpp"
+#ifndef Controller_hpp
+#define Controller_hpp
 
-struct Controller : IController
-{
-	Controller(ILogger* logger) :
-		IController()
-	{
-		logger_ = logger;
-	}
+#include <stdio.h>
 
-	~Controller() {}
+#include "IController.h"
 
-	std::vector<IRemoteAgent*> GetAvailableAgents() override;
-	void BuildContent(IContent* content) override;
-
-private:
-	Controller(const Controller& other) = delete;
+class Controller : public IController {
+public:
+    Controller(ILogger *logger, INetwork* network);
+    std::vector<IRemoteAgent*> GetAvailableAgents();
+    void BuildContent(IContent* content);
 };
+
+#endif /* Controller_hpp */

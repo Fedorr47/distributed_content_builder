@@ -10,14 +10,15 @@
 
 #include <vector>
 
-#include "..\Interfaces\IContent.hpp"
-#include "..\Interfaces\IRemoteAgent.hpp"
-#include "..\Interfaces\ILogger.hpp"
+#include "IContent.h"
+#include "IRemoteAgent.h"
+#include "ILogger.h"
+#include "INetwork.h"
 
 class IController {
 public:
-    IController() {}
-    ILogger* logger_{nullptr};
+    ILogger *logger_;
+    INetwork *network_;
 public:
     virtual std::vector<IRemoteAgent*> GetAvailableAgents() = 0;
     virtual void BuildContent(IContent* content) = 0;

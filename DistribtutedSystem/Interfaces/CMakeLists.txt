@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.8)
 
 set(HEADERS
-   ${SOURCE}
+   ${HEADERS}
    ${CMAKE_CURRENT_SOURCE_DIR}/IContent.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/IController.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/ILogger.hpp

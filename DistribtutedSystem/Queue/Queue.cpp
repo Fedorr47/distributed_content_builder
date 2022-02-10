@@ -12,8 +12,8 @@
 #include <vector>
 
 #include "Queue.hpp"
-#include "../Agent/Agent.hpp"
-#include "../Network/TestNetwork.hpp"
+#include "Agent.hpp"
+#include "TestNetwork.hpp"
 
 Queue::Queue(int count, ILogger* logger)
     :logger_(logger)

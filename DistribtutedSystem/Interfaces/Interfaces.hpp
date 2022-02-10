@@ -3,13 +3,13 @@
 //  distributed_content_builder
 //
 //  Created by Евгений Курятов on 19.01.2022.
-//
+// 
 
 #ifndef Interfaces_h
 #define Interfaces_h
 
 #include <string>
-#include "ITask.hpp"
+#include "ITask.h"
 
 
 // TODO: Split IAgent to IHost and IRemoteAgent
@@ -18,7 +18,6 @@ public:
     enum class AgentStatus {
         STATE_AVAILABLE, STATE_BUSY, STATE_OFFLINE, STATE_TASK_COMPLETE
     };
-    IAgent() {}
     
     virtual void DoTask(ITask* job) = 0;
     virtual IAgent* GetAvailableAgents() = 0;

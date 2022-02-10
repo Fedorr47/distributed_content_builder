@@ -10,10 +10,11 @@
 #include <time.h>
 #include <cstdlib>
 #include <string>
+
 #include "Agent.hpp"
-#include "../Queue/Queue.hpp"
-#include "../Logger/MacLogger.hpp"
-#include "../Network/TestNetwork.hpp"
+#include "Queue.hpp"
+#include "MacLogger.hpp"
+#include "TestNetwork.hpp"
 
 Agent::Agent(int id, int count){
     state_ = AgentStatus::STATE_AVAILABLE;

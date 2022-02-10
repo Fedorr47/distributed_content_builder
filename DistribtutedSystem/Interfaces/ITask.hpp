@@ -14,7 +14,6 @@ public:
         TASK_IN_PROGRESS, TASK_DONE, TASK_READY_FOR_BUILD, TASK_FAILED
     };
     
-    ITask() {}
     virtual TaskStatus GetStatus() = 0;
     virtual void SetStatus(TaskStatus new_status) = 0;
     virtual int GetSize() = 0;

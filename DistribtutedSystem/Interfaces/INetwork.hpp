@@ -8,11 +8,10 @@
 #ifndef INetwork_h
 #define INetwork_h
 
-#include "IRemoteAgent.hpp"
+#include "IRemoteAgent.h"
 
 class INetwork {
 public:
-    INetwork() {}
     virtual bool SendTaskToRemoteAgent(IRemoteAgent *target_agent, ITask *task) = 0;
     virtual IRemoteAgent::AgentStatus CheckAgentStatus(IRemoteAgent *target_agent) = 0;
     virtual void CollectTaskResult(IRemoteAgent *target_agent) = 0;

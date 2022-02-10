@@ -10,7 +10,6 @@
 
 class IContent {
 public:
-    IContent() {}
     virtual int GetSize() = 0;
 };
 #endif /* IContent_h */

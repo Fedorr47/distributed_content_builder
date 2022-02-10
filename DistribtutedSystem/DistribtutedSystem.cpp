@@ -9,11 +9,11 @@
 #include <cstdlib>
 #include <thread>
 
-#include "Logger\MacLogger.hpp"
-#include "Content\TestContent.hpp"
-#include "Controller\DebugControllerDecorator.hpp"
-
-#include "Controller\Controller.hpp"
+#include "MacLogger.hpp"
+#include "Controller.hpp"
+#include "TestContent.hpp"
+#include "DebugControllerDecorator.hpp"
+#include "TestNetwork.hpp"
 
 const int kAgentCount = 16; // Wat if we have more than 22 nodes?
 const int kBuildSize = 50;
@@ -22,13 +22,14 @@ const int kTestsCount = 1;
 int main(int argc, const char* argv[]) {
 
     MacLogger* logger = new MacLogger();
-    Controller* controller = new Controller(logger);
+    TestNetwork* network = new TestNetwork(logger);
+    Controller* controller = new Controller(logger, network);
     DebugControllerDecorator* d_controller = new DebugControllerDecorator(controller);
     TestContent* content = new TestContent(kBuildSize);
 
 
-    double time[kTestsCount];
-    double summ = 0;
+    //    double time[kTestsCount];
+    //    double summ = 0;
     for (int i = 0; i < kTestsCount; i++) {
         //        time[i] = controller->BuildContent(kBuildSize);
         d_controller->BuildContent(content);

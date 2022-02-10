@@ -3,6 +3,8 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
+include_directories(./../Interfaces/)
+
 set(HEADERS
    ${HEADERS}
    ${CMAKE_CURRENT_SOURCE_DIR}/Agent.hpp

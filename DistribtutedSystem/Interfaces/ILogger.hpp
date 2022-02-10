@@ -8,6 +8,8 @@
 #ifndef ILogger_h
 #define ILogger_h
 
+#include <string>
+
 class ILogger {
 public:
     enum LogLevel {

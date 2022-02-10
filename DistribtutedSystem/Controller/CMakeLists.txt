@@ -3,6 +3,8 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
+include_directories(./../Interfaces/)
+
 set(SOURCE
    ${SOURCE}
    ${CMAKE_CURRENT_SOURCE_DIR}/DebugController.cpp

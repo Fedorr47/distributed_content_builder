@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <string>
 
+#include "ITask.hpp"
 #include "RemoteAgent.hpp"
 
 RemoteAgent::RemoteAgent(int id) {

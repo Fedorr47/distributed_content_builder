@@ -9,7 +9,7 @@
 #define TestContent_hpp
 
 #include <stdio.h>
-#include "IContent.h"
+#include "IContent.hpp"
 
 class TestContent : public IContent {
 public:
